@@ -8,11 +8,15 @@ namespace UniversitySystem
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using UniversitySystem.Data;
 
     public class Program
     {
         public static void Main(string[] args)
         {
+            var db = new ApplicationDbContext();
+            db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
             CreateHostBuilder(args).Build().Run();
         }
 
