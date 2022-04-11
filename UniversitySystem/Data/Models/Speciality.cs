@@ -19,6 +19,6 @@
 
         public University University { get; set; }
 
-        public IEnumerable<Subject> Subjects { get; set; }
+        public ICollection<Subject> Subjects { get; set; }
     }
 }

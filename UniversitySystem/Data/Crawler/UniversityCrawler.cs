@@ -1,17 +1,26 @@
 ﻿namespace UniversitySystem.Data.Crawler
 {
-    using AngleSharp;
-    using AngleSharp.Dom;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using AngleSharp;
+
     using UniversitySystem.Data.Models;
 
     public class UniversityCrawler
     {
-        static async Task Crawl(string[] args)
+        private ApplicationDbContext db;
+        Random random;
+
+        public UniversityCrawler(ApplicationDbContext db)
+        {
+            this.db = db;
+            this.random = new Random();
+        }
+
+        public async Task Crawl()
         {
             Console.OutputEncoding = Encoding.UTF8;
             var config = Configuration.Default.WithDefaultLoader();
@@ -25,40 +34,46 @@
             foreach (var item in uniqueUniversityUrls)
             {
                 var university = new University();
-                Console.WriteLine("--------NEW UNIVERSITY--------");
-                IDocument universityDoc = await GetUniversityData(context, item, university);
+                await GetUniversityData(context, item, university);
 
-                //Console.WriteLine(item);
             }
 
         }
 
-        private static async Task<IDocument> GetUniversityData(IBrowsingContext context, string url, University university)
+        private async Task GetUniversityData(IBrowsingContext context, string url, University university)
         {
             var document = await context.OpenAsync($"{url}");
 
             //get University name 
             var universityName = document.QuerySelector("#uniHead > h2");
             university.Name = universityName.InnerHtml;
-            //Console.WriteLine(universityName.InnerHtml);
 
             //get city
             var cityName = document.QuerySelector("#cityGerb");
-            university.City = cityName.InnerHtml;
-            //Console.WriteLine(cityName.TextContent);
+            //innerHtml return src image
+            university.City = cityName.TextContent;
 
             //get website
             var website = document.QuerySelector("#uniInfo > a");
             university.WebUrl = website.InnerHtml;
-            //Console.WriteLine(website.InnerHtml);
+
             //get all specialities
             var specialities = document.QuerySelectorAll(".usBox");
             foreach (var speciality in specialities)
             {
-                Console.WriteLine(speciality.Children[1].FirstElementChild.InnerHtml);
+                university.Specialities.Add(new Speciality
+                {
+                    Name = speciality.Children[1].FirstElementChild.InnerHtml,
+                    MinimumScore = Math.Round(this.GetRandomNumber(18, 28), 2),
+                });
             }
+            db.Universities.Add(university);
+            await db.SaveChangesAsync();
+        }
 
-            return document;
+        private double GetRandomNumber(double minimum, double maximum)
+        {
+            return this.random.NextDouble() * (maximum - minimum) + minimum;
         }
     }
 }

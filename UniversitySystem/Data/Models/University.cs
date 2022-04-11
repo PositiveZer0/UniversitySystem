@@ -17,7 +17,7 @@
 
         public string WebUrl { get; set; }
 
-        public IEnumerable<Speciality> Specialities { get; set; }
+        public ICollection<Speciality> Specialities { get; set; }
 
         public Image Image { get; set; }
     }
