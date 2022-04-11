@@ -14,6 +14,7 @@ namespace UniversitySystem
     using System.Linq;
     using System.Threading.Tasks;
     using UniversitySystem.Data;
+    using UniversitySystem.Services;
 
     public class Startup
     {
@@ -35,6 +36,8 @@ namespace UniversitySystem
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddTransient<IUniversityService, UniversityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
