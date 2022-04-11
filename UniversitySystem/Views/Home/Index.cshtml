@@ -1,4 +1,5 @@
-﻿@{
+﻿@model UniversityViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +7,21 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+@{
+    string imagePath = "/images/universityLogos/" + @Model.Image.Name + "." + @Model.Image.Extension;
+}
+<div class="row">
+    @for (var i = 0; i < 10; i++)
+    {
+        <div class="col-md-3">
+            <figure>
+                <img src=@imagePath height="150" />
+                <figcaption class="align-content-center">@Model.Name</figcaption>
+            </figure>
+        </div>
+
+    }
+</div>
+
+
+

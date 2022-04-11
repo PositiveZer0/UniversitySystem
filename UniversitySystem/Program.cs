@@ -9,7 +9,7 @@ namespace UniversitySystem
     using System.Linq;
     using System.Threading.Tasks;
     using UniversitySystem.Data;
-    using UniversitySystem.Data.Crawler;
+    using UniversitySystem.Data.Seed;
 
     public class Program
     {

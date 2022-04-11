@@ -1,26 +1,45 @@
 ﻿namespace UniversitySystem.Controllers
 {
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.FileProviders;
     using Microsoft.Extensions.Logging;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
+    using UniversitySystem.Data;
     using UniversitySystem.Models;
 
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
+            this.db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var image = this.db.Images.FirstOrDefault(x => x.Id == 1);
+            var img = new ImageViewModel
+            {
+                Name = image.Name,
+                Extension = image.Extension,
+            };
+
+            var university = new UniversityViewModel
+            {
+                Name = "University SUCKS",
+                Image = img,
+            };
+
+            return View(university);
         }
 
         public IActionResult Privacy()

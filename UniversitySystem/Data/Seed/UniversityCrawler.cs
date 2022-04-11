@@ -1,4 +1,4 @@
-﻿namespace UniversitySystem.Data.Crawler
+﻿namespace UniversitySystem.Data.Seed
 {
     using System;
     using System.Collections.Generic;

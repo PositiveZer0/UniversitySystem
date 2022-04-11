@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Text;
     using UniversitySystem.Data.Models;
+    using UniversitySystem.Data.Seed;
 
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -20,10 +21,21 @@
         }
 
         public DbSet<University> Universities { get; set; }
+
         public DbSet<Speciality> Specialities { get; set; }
+
         public DbSet<Subject> Subjects { get; set; }
+
         public DbSet<UserSubject> UserSubjects{ get; set; }
+
         public DbSet<Image> Images { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        { 
+            base.OnModelCreating(builder);
+
+            builder.Seed();
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
