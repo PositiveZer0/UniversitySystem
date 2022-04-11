@@ -41,6 +41,7 @@ namespace UniversitySystem
             services.AddControllersWithViews();
 
             services.AddTransient<IUniversityService, UniversityService>();
+            services.AddTransient<ISpecialityService, SpecialityService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

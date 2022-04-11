@@ -4,7 +4,6 @@
     using System.Linq;
     using UniversitySystem.Automapper;
     using UniversitySystem.Data;
-    using UniversitySystem.Models;
 
     public class UniversityService : IUniversityService
     {
