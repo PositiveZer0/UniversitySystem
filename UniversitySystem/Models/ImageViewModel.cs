@@ -1,6 +1,9 @@
 ﻿namespace UniversitySystem.Models
 {
-    public class ImageViewModel
+    using UniversitySystem.Automapper;
+    using UniversitySystem.Data.Models;
+
+    public class ImageViewModel : IMapFrom<Image>
     {
         public string Name { get; set; }
 

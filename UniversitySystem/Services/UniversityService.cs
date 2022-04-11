@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using UniversitySystem.Automapper;
     using UniversitySystem.Data;
     using UniversitySystem.Models;
 
@@ -14,18 +15,21 @@
             this.db = db;
         }
 
-        public ICollection<UniversityViewModel> GetAll()
+        public ICollection<T> GetAll<T>()
         {
-            var universities = this.db.Universities.Select(x => new UniversityViewModel
-            {
-                Name = x.Name,
-                Image = new ImageViewModel
-                {
-                    Name = x.Image.Name,
-                    Extension = x.Image.Extension,
-                },
-            });
+            //without automapper
+            //var universities = this.db.Universities.Select(x => new UniversityViewModel
+            //{
+            //    Name = x.Name,
+            //    Image = new ImageViewModel
+            //    {
+            //        Name = x.Image.Name,
+            //        Extension = x.Image.Extension,
+            //    },
+            //});
 
+            //with automapper
+            var universities = this.db.Universities.To<T>();
             return universities.ToList();
             
         }

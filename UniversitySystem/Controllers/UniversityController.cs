@@ -1,6 +1,7 @@
 ﻿namespace UniversitySystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using UniversitySystem.Models;
     using UniversitySystem.Services;
 
     public class UniversityController : Controller
@@ -14,7 +15,7 @@
 
         public IActionResult Index()
         {
-            var universities = universityService.GetAll();
+            var universities = universityService.GetAll<UniversityViewModel>();
             return View(universities);
         }
     }

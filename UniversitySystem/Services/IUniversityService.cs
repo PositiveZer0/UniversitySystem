@@ -6,6 +6,6 @@
 
     public interface IUniversityService
     {
-        ICollection<UniversityViewModel> GetAll();
+        ICollection<T> GetAll<T>();
     }
 }

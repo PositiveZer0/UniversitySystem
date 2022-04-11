@@ -1,6 +1,9 @@
 ﻿namespace UniversitySystem.Models
 {
-    public class UniversityViewModel
+    using UniversitySystem.Automapper;
+    using UniversitySystem.Data.Models;
+
+    public class UniversityViewModel : IMapFrom<University>
     {
         public string Name { get; set; }
 

@@ -3,9 +3,8 @@
     ViewData["Title"] = "Universities";
 }
 
-<h1>Hi</h1>
-<div class="row">
 
+<div class="row">
 @foreach (var university in Model)
 {
     string imagePath = "/images/universityLogos/" + @university.Image.Name + "." + @university.Image.Extension;
