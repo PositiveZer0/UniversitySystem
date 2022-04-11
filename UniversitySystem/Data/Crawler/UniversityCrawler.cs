@@ -3,13 +3,15 @@
     using AngleSharp;
     using AngleSharp.Dom;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using UniversitySystem.Data.Models;
 
     public class UniversityCrawler
     {
-        static async Task Main(string[] args)
+        static async Task Crawl(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             var config = Configuration.Default.WithDefaultLoader();
@@ -22,29 +24,33 @@
 
             foreach (var item in uniqueUniversityUrls)
             {
+                var university = new University();
                 Console.WriteLine("--------NEW UNIVERSITY--------");
-                IDocument universityDoc = await GetUniversityData(context, item);
+                IDocument universityDoc = await GetUniversityData(context, item, university);
 
                 //Console.WriteLine(item);
             }
 
         }
 
-        private static async Task<IDocument> GetUniversityData(IBrowsingContext context, string url)
+        private static async Task<IDocument> GetUniversityData(IBrowsingContext context, string url, University university)
         {
             var document = await context.OpenAsync($"{url}");
 
             //get University name 
             var universityName = document.QuerySelector("#uniHead > h2");
-            Console.WriteLine(universityName.InnerHtml);
+            university.Name = universityName.InnerHtml;
+            //Console.WriteLine(universityName.InnerHtml);
 
             //get city
             var cityName = document.QuerySelector("#cityGerb");
-            Console.WriteLine(cityName.TextContent);
+            university.City = cityName.InnerHtml;
+            //Console.WriteLine(cityName.TextContent);
 
             //get website
             var website = document.QuerySelector("#uniInfo > a");
-            Console.WriteLine(website.InnerHtml);
+            university.WebUrl = website.InnerHtml;
+            //Console.WriteLine(website.InnerHtml);
             //get all specialities
             var specialities = document.QuerySelectorAll(".usBox");
             foreach (var speciality in specialities)

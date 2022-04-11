@@ -15,6 +15,10 @@
 
         public double MinimumScore { get; set; }
 
+        public int UniversityId { get; set; }
+
+        public University University { get; set; }
+
         public IEnumerable<Subject> Subjects { get; set; }
     }
 }
