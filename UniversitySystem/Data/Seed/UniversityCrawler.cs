@@ -12,7 +12,8 @@
     public class UniversityCrawler
     {
         private ApplicationDbContext db;
-        Random random;
+        private Random random;
+        private int counter = 1;
 
         public UniversityCrawler(ApplicationDbContext db)
         {
@@ -67,6 +68,10 @@
                     MinimumScore = Math.Round(this.GetRandomNumber(18, 28), 2),
                 });
             }
+
+            //add imageId
+            university.ImageId = counter;
+            this.counter++;
             db.Universities.Add(university);
             await db.SaveChangesAsync();
         }

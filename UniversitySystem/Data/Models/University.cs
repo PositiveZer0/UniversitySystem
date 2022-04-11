@@ -19,6 +19,8 @@
 
         public ICollection<Speciality> Specialities { get; set; }
 
+        public int ImageId { get; set; }
+
         public Image Image { get; set; }
     }
 }
