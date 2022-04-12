@@ -1,0 +1,44 @@
+﻿@using UniversitySystem.Models.Speciality
+@model SpecialityListViewModel
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+
+        <!--previous button-->
+        <li class="page-item @if(!Model.HasPrevious){<text>disabled</text>}">
+            <a class="page-link " asp-controller="Speciality" asp-action="Index" asp-route-id="@Model.PreviousPage">Previous</a>
+        </li>
+
+        <!--iterate previous three pages-->
+        @for (var i = Model.PageNumber - 3; i < Model.PageNumber; i++)
+        {
+            if (i > 0)
+            {
+                <!--previous page number-->
+                <li class="page-item"><a class="page-link" asp-controller="Speciality" asp-action="Index" asp-route-id="@i">@i</a></li>
+            }
+        }
+
+        <!--current page number-->
+        <li class="page-item active">
+            <a class="page-link" asp-controller="Speciality" asp-action="Index" asp-route-id="@Model.PageNumber">@Model.PageNumber <span class="sr-only">@Model.PageNumber </span></a>
+        </li>
+
+        <!--iterate next three pages-->
+        @for (var i = Model.PageNumber + 1; i <= Model.PageNumber + 3; i++)
+        {
+            if (i <= Model.PagesCount)
+            {
+                <!--next page number-->
+                <li class="page-item"><a class="page-link" asp-controller="Speciality" asp-action="Index" asp-route-id="@i">@i</a></li>
+            }
+        }
+        
+        <!--next button-->
+        <li class="page-item @if(!Model.HasNext){<text>disabled</text>}">
+            <a class="page-link " asp-controller="Speciality" asp-action="Index" asp-route-id="@Model.NextPage">Next</a>
+        </li>
+    </ul>
+</nav>
+
+

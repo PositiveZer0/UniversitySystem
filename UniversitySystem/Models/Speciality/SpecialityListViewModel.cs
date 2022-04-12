@@ -13,7 +13,7 @@
 
         public int SpecialitiesCount { get; set; }
 
-        public bool HasPrevious  => this.PageNumber > 0;
+        public bool HasPrevious  => this.PageNumber > 1;
 
         public bool HasNext => this.PageNumber < this.PagesCount;
 
