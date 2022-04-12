@@ -15,10 +15,18 @@
 
         public IActionResult Index(int id = 1)
         {
+            const int itemPerPage = 20;
+            if (id < 1)
+            {
+                //return error
+                return this.Redirect("");
+            }
             var model = new SpecialityListViewModel
             {
-                Specialities = this.specialityService.GetSpecialitiesForPage<SpecialityViewModel>(id, 20),
+                Specialities = this.specialityService.GetSpecialitiesForPage<SpecialityViewModel>(id, itemPerPage),
                 PageNumber = id,
+                ItemsPerPage = itemPerPage,
+                SpecialitiesCount = this.specialityService.GetSpecialityCount(),
             };
             return View(model);
         }

@@ -7,5 +7,7 @@
         ICollection<T> GetAll<T>();
 
         ICollection<T> GetSpecialitiesForPage<T>(int page, int count);
+
+        int GetSpecialityCount();
     }
 }

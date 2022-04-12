@@ -4,6 +4,7 @@
     using System.Linq;
     using UniversitySystem.Automapper;
     using UniversitySystem.Data;
+    using UniversitySystem.Models;
 
     public class SpecialityService : ISpecialityService
     {
@@ -15,7 +16,7 @@
         }
         public ICollection<T> GetAll<T>()
         {
-            return this.db.Specialities.To<T>().ToList();
+            return this.db.Specialities.OrderBy(x => x.Name).To<T>().ToList();
         }
 
         public ICollection<T> GetSpecialitiesForPage<T>(int page, int count)
@@ -24,7 +25,12 @@
             //20-39 page 2
             //40-59 page 3
 
-            return this.db.Specialities.Skip(count * (page - 1)).Take(count).To<T>().ToList();
+            return this.db.Specialities.OrderBy(x => x.Name).Skip(count * (page - 1)).Take(count).To<T>().ToList();
+        }
+
+        public int GetSpecialityCount()
+        {
+            return this.db.Specialities.Count();
         }
     }
 }
