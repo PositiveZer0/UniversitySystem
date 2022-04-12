@@ -13,9 +13,13 @@
             this.specialityService = specialityService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id = 1)
         {
-            var model = this.specialityService.GetAll<SpecialityViewModel>();
+            var model = new SpecialityListViewModel
+            {
+                Specialities = this.specialityService.GetSpecialitiesForPage<SpecialityViewModel>(id, 20),
+                PageNumber = id,
+            };
             return View(model);
         }
     }
