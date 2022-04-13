@@ -32,5 +32,10 @@
             return universities.ToList();
             
         }
+
+        public T GetCurrent<T>(int id)
+        {
+            return this.db.Universities.Where(x => x.Id == id).To<T>().FirstOrDefault();
+        }
     }
 }

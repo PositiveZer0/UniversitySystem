@@ -12,6 +12,7 @@
     using System.Threading.Tasks;
     using UniversitySystem.Data;
     using UniversitySystem.Models;
+    using UniversitySystem.Models.UniversityModels;
 
     public class HomeController : Controller
     {
@@ -27,7 +28,7 @@
         public IActionResult Index()
         {
             var image = this.db.Images.FirstOrDefault(x => x.Id == 1);
-            var img = new ImageViewModel
+            var img = new ImageInUniversityViewModel
             {
                 Name = image.Name,
                 Extension = image.Extension,

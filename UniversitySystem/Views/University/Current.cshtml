@@ -1,0 +1,21 @@
+﻿@using UniversitySystem.Models.UniversityModels
+@model CurrentUniversityViewModel
+
+@{
+    ViewData["Title"] = "Universities";
+    string imagePath = "/images/universityLogos/" + @Model.Image.Name + "." + @Model.Image.Extension;
+}
+
+<h1>@Model.Name</h1>
+<hr />
+<div class="row">
+    <div class="col-md-2 ">
+        <figure>
+            <img src=@imagePath height="150" />
+        </figure>
+    </div>
+    <div class="col-md-3 ">
+        <h4>@Model.City</h4>
+        <h4>@Model.WebUrl</h4>
+    </div>
+</div>

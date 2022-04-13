@@ -1,4 +1,4 @@
-﻿namespace UniversitySystem.Models.Speciality
+﻿namespace UniversitySystem.Models.SpecialityModels
 {
     using System;
     using System.Collections.Generic;

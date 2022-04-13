@@ -7,5 +7,7 @@
     public interface IUniversityService
     {
         ICollection<T> GetAll<T>();
+
+        T GetCurrent<T>(int id);
     }
 }

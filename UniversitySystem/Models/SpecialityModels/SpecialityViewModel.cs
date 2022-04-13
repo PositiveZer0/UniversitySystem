@@ -1,4 +1,4 @@
-﻿namespace UniversitySystem.Models.Speciality
+﻿namespace UniversitySystem.Models.SpecialityModels
 {
     using UniversitySystem.Automapper;
     using UniversitySystem.Data.Models;
