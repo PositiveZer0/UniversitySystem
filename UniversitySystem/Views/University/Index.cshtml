@@ -5,15 +5,17 @@
 }
 
 
-<div class="row">
-@foreach (var university in Model)
-{
-    string imagePath = "/images/universityLogos/" + @university.Image.Name + "." + @university.Image.Extension;
-    <div class="col-md-3 ">
-            <figure>
+<div class="row text-center">
+    @foreach (var university in Model)
+    {
+        string imagePath = "/images/universityLogos/" + @university.Image.Name + "." + @university.Image.Extension;
+        <div class="col-md-3 mx-auto">
+            <a class="text-reset" asp-controller="University" asp-action="Current" asp-route-id="@university.Id">
+                <figure>
                 <img src=@imagePath height="150" />
-                <figcaption class="align-content-center">@university.Name</figcaption>
+                <p>@university.Name</p>
             </figure>
+            </a>
         </div>
-}
+    }
 </div>
