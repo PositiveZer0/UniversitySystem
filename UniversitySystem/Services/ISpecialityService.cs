@@ -10,5 +10,6 @@
 
         int GetSpecialityCount();
 
+        ICollection<T> GetCurrentUniversitySpecialitiesForPage<T>(int id, int page, int count);
     }
 }

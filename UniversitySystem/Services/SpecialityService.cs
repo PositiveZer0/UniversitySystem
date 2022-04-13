@@ -19,6 +19,11 @@
             return this.db.Specialities.OrderBy(x => x.Name).To<T>().ToList();
         }
 
+        public ICollection<T> GetCurrentUniversitySpecialitiesForPage<T>(int id, int page, int count)
+        {
+            return this.db.Specialities.Where(x => x.UniversityId == id).OrderBy(x => x.Name).To<T>().ToList();
+        }
+
         public ICollection<T> GetSpecialitiesForPage<T>(int page, int count)
         {
             //0-19 page 1

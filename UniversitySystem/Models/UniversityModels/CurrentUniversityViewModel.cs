@@ -16,5 +16,6 @@
         public ICollection<SpecialityViewModel> Specialities { get; set; }
 
         public ImageInUniversityViewModel Image { get; set; }
+
     }
 }
