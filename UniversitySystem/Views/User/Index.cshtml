@@ -1,2 +1,33 @@
-﻿<h1 class="text-center">Моите оценки</h1>
-<hr/>
+﻿@using UniversitySystem.Models.UserModels
+@model UserViewModel
+
+<h1 class="text-center">Моите оценки</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 text-center">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.BulgarianExam"></label>
+                <input class="form-control" asp-for="@Model.BulgarianExam" placeholder="6.00" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.SecondExam"></label>
+                <input class="form-control" asp-for="@Model.SecondExam" placeholder="6.00" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AssesmentBulagrian"></label>
+                <input class="form-control" asp-for="@Model.AssesmentBulagrian" placeholder="6.00" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AssesmentSecondSubject"></label>
+                <input class="form-control" asp-for="@Model.AssesmentSecondSubject" placeholder="6.00" />
+            </div>
+            <hr />
+            <button type="submit" class="btn btn-primary">Запази</button>
+        </form>
+    </div>
+
+</div>

@@ -7,6 +7,24 @@
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Subject>().HasData(new Subject()
+            {
+                Id = 1,
+                Name = "Матура по български език",
+            }, new Subject()
+            {
+                Id = 2,
+                Name = "Свободноизбираема матура",
+            }, new Subject()
+            {
+                Id = 3,
+                Name = "Оценка по български език",
+            }, new Subject()
+            {
+                Id = 4,
+                Name = "Втора оценка по избираем предмет",
+            });
+
             modelBuilder.Entity<Image>().HasData(new Image
             {
                 Id = 1,
