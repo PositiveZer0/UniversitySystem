@@ -1,6 +1,7 @@
 ﻿namespace UniversitySystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+
     using UniversitySystem.Models.SpecialityModels;
     using UniversitySystem.Services;
 

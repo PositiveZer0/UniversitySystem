@@ -1,9 +1,10 @@
 ﻿namespace UniversitySystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using UniversitySystem.Models.SpecialityModels;
-    using UniversitySystem.Models.UniversityModels;
+
     using UniversitySystem.Services;
+    using UniversitySystem.Models.UniversityModels;
+    using UniversitySystem.Models.SpecialityModels;
 
     public class UniversityController : Controller
     {

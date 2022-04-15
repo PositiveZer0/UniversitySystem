@@ -1,12 +1,13 @@
 ﻿namespace UniversitySystem.Controllers
 {
+    using System.Threading.Tasks;
+    using System.Security.Claims;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using UniversitySystem.Models.UserModels;
+
     using UniversitySystem.Services;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
+    using UniversitySystem.Models.UserModels;
 
     public class UserController : Controller
     {

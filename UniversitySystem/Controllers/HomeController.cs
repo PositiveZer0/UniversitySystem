@@ -1,15 +1,10 @@
 ﻿namespace UniversitySystem.Controllers
 {
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.FileProviders;
-    using Microsoft.Extensions.Logging;
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.IO;
     using System.Linq;
-    using System.Threading.Tasks;
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+
     using UniversitySystem.Data;
     using UniversitySystem.Models;
     using UniversitySystem.Models.UniversityModels;
