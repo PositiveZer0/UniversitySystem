@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniversitySystem.Data;
 
 namespace UniversitySystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220416110515_AddRequierments")]
+    partial class AddRequierments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -536,7 +538,12 @@ namespace UniversitySystem.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SpecialityId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SpecialityId");
 
                     b.ToTable("Subjects");
 
@@ -676,6 +683,13 @@ namespace UniversitySystem.Data.Migrations
                     b.Navigation("University");
                 });
 
+            modelBuilder.Entity("UniversitySystem.Data.Models.Subject", b =>
+                {
+                    b.HasOne("UniversitySystem.Data.Models.Speciality", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("SpecialityId");
+                });
+
             modelBuilder.Entity("UniversitySystem.Data.Models.University", b =>
                 {
                     b.HasOne("UniversitySystem.Data.Models.Image", "Image")
@@ -702,6 +716,11 @@ namespace UniversitySystem.Data.Migrations
                     b.Navigation("Subject");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("UniversitySystem.Data.Models.Speciality", b =>
+                {
+                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("UniversitySystem.Data.Models.Subject", b =>

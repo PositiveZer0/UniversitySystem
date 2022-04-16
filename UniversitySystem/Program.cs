@@ -16,8 +16,8 @@ namespace UniversitySystem
         public static void Main(string[] args)
         {
             var db = new ApplicationDbContext();
-            db.Database.EnsureDeleted();
-            db.Database.EnsureCreated();
+            //db.Database.EnsureDeleted();
+            //db.Database.EnsureCreated();
             var uniCrawler = new UniversityCrawler(db);
             uniCrawler.Crawl().GetAwaiter().GetResult();
             CreateHostBuilder(args).Build().Run();
