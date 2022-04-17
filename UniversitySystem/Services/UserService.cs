@@ -1,7 +1,9 @@
 ﻿namespace UniversitySystem.Services
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Automapper;
 
     using UniversitySystem.Data;
     using UniversitySystem.Data.Models;
@@ -52,5 +54,10 @@
 
             await this.db.SaveChangesAsync();
         }
+
+        //public ICollection<T> GetUserGrades<T>(string userId)
+        //{
+        //    return this.db.UserSubjects.Where(x => x.UserId == userId).To<T>().ToList();
+        //}
     }
 }

@@ -11,5 +11,9 @@
         int GetSpecialityCount();
 
         ICollection<T> GetCurrentUniversitySpecialitiesForPage<T>(int id, int page, int count);
+
+        double GetUserScore(string userId);
+
+        bool UserHasGrades(string userId);
     }
 }

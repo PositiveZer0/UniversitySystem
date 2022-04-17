@@ -37,5 +37,18 @@
         {
             return this.db.Specialities.Count();
         }
+
+        public double GetUserScore(string userId)
+        {
+            var scoreList = this.db.UserSubjects.Where(x => x.UserId == userId).Select(x => x.Grade).ToArray();
+            double totalScore = 2 *(scoreList[0] + scoreList[1]) + scoreList[2] + scoreList[3];
+
+            return totalScore;
+        }
+
+        public bool UserHasGrades(string userId)
+        {
+            return this.db.UserSubjects.Where(x => x.UserId == userId).Count() == 4;
+        }
     }
 }

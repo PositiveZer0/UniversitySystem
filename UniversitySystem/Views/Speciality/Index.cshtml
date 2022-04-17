@@ -13,9 +13,14 @@
             <th scope="col">Име на специалността</th>
             <th scope="col">Име на университета</th>
             <th scope="col">Минимален бал</th>
+            @if (User.Identity.IsAuthenticated && @Model.Score != 0)
+            {
+                <th scope="col">Шанс</th>
+            }
         </tr>
     </thead>
     <tbody>
+
         @foreach (var speciality in Model.Specialities)
         {
             counter++;
@@ -24,6 +29,17 @@
                 <td>@speciality.Name</td>
                 <td>@speciality.UniversityName</td>
                 <td>@speciality.MinimumScore</td>
+                @if (User.Identity.IsAuthenticated && @Model.Score != 0)
+                {
+                    if (@speciality.MinimumScore > @Model.Score)
+                    {
+                        <td class="text-success"><i class="fas fa-check"></i></td>
+                    }
+                    else
+                    {
+                        <td class="text-danger"><i class="fa-regular fa-x"></i></td>
+                    }
+                }
             </tr>
         }
     </tbody>

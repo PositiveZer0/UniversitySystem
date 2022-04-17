@@ -3,7 +3,6 @@
     using System.Threading.Tasks;
     using System.Security.Claims;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     using UniversitySystem.Services;
@@ -12,7 +11,6 @@
     public class UserController : Controller
     {
         private IUserService userService;
-        private readonly UserManager<IdentityUser> userManager;
 
         public UserController(IUserService userService)
         {

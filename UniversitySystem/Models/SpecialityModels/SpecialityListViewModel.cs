@@ -22,5 +22,7 @@
         public int NextPage => this.PageNumber + 1;
 
         public int PagesCount => (int)Math.Ceiling((decimal)SpecialitiesCount / 20);
+
+        public double Score { get; set; }
     }
 }
