@@ -31,7 +31,7 @@
                 <td>@speciality.MinimumScore</td>
                 @if (User.Identity.IsAuthenticated && @Model.Score != 0)
                 {
-                    if (@speciality.MinimumScore > @Model.Score)
+                    if (@speciality.MinimumScore < @Model.Score)
                     {
                         <td class="text-success"><i class="fas fa-check"></i></td>
                     }

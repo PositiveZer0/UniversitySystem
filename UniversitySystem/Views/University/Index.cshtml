@@ -2,20 +2,31 @@
 @model List<UniversityViewModel>
 @{
     ViewData["Title"] = "Universities";
+    int counter = 1;
 }
 
 
-<div class="row text-center">
+<div class="row text-center" >
     @foreach (var university in Model)
     {
         string imagePath = "/images/universityLogos/" + @university.Image.Name + "." + @university.Image.Extension;
-        <div class="col-md-3 mx-auto">
+        <div class="col-md-3 mx-auto"  >
             <a class="text-reset" asp-controller="University" asp-action="Current" asp-route-id="@university.Id">
                 <figure>
-                <img src=@imagePath height="150" />
-                <p>@university.Name</p>
+                <img  src=@imagePath height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)"/>
+                <p >@university.Name</p>
             </figure>
             </a>
         </div>
     }
 </div>
+
+<script>
+    function zoomIn(event){
+        event.target.height = 160;
+    }
+
+    function zoomOut(event){
+        event.target.height = 150;
+    }
+</script>
