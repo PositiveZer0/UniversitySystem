@@ -22,20 +22,7 @@
 
         public IActionResult Index()
         {
-            var image = this.db.Images.FirstOrDefault(x => x.Id == 1);
-            var img = new ImageInUniversityViewModel
-            {
-                Name = image.Name,
-                Extension = image.Extension,
-            };
-
-            var university = new UniversityViewModel
-            {
-                Name = "University SUCKS",
-                Image = img,
-            };
-
-            return View(university);
+            return View();
         }
 
         public IActionResult Privacy()
