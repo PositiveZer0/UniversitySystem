@@ -39,6 +39,8 @@ namespace UniversitySystem
             services.AddTransient<ISpecialityService, SpecialityService>();
             services.AddTransient<IUserService, UserService>();
             services.AddHttpContextAccessor();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,6 +82,7 @@ namespace UniversitySystem
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
         }
     }
 }

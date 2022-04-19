@@ -1,10 +1,13 @@
 ﻿@using UniversitySystem.Models.SpecialityModels
 @model SpecialityListViewModel
 @{
-    ViewData["Title"] = "Specialities";
+    ViewData["Title"] = "Специалности";
     int pageCount = 20;
     int counter = (Model.PageNumber - 1) * pageCount;
 }
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
 
 <table class="table">
     <thead>

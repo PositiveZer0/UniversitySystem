@@ -8,6 +8,7 @@ namespace UniversitySystem
     using System.Collections.Generic;
     using System.Linq;
     using UniversitySystem.Data;
+    using UniversitySystem.Sendgrid;
 
     public class Program
     {
@@ -20,6 +21,7 @@ namespace UniversitySystem
             //var uniCrawler = new UniversityCrawler(db);
             //uniCrawler.Crawl().GetAwaiter().GetResult();
             CreateHostBuilder(args).Build().Run();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -9,16 +9,20 @@
     using UniversitySystem.Models;
     using UniversitySystem.Models.UniversityModels;
     using UniversitySystem.Models.Contact;
+    using System.Threading.Tasks;
+    using UniversitySystem.Sendgrid;
 
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext db;
+        private readonly SendGridEmailSender sendGridEmail;
 
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
             this.db = db;
+            this.sendGridEmail = new SendGridEmailSender(ConfigurationConstants.SENDGRID_APIKEY);
         }
 
         public IActionResult Index()
@@ -37,13 +41,15 @@
         }
 
         [HttpPost]
-        public IActionResult Contact(ContactViewModel model)
+        public async Task<IActionResult> Contact(ContactViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return this.View(model);
             }
 
+            await sendGridEmail.SendEmailAsync
+                (ConfigurationConstants.EMAIL, "University System", ConfigurationConstants.EMAIL, model.Title, $"Email sender: {model.ClientEmail}" + model.Description);
             return this.Redirect("/");
         }
 
