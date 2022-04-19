@@ -22,6 +22,7 @@ namespace UniversitySystem.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
+        [Display(Name = "Потребителско име")]
         public string Username { get; set; }
 
         [TempData]
@@ -33,7 +34,7 @@ namespace UniversitySystem.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Телефонен номер")]
             public string PhoneNumber { get; set; }
         }
 
@@ -86,9 +87,8 @@ namespace UniversitySystem.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Профила ви беше обновен";
             return RedirectToPage();
         }
     }

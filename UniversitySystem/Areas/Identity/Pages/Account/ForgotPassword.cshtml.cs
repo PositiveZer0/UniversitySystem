@@ -32,6 +32,7 @@ namespace UniversitySystem.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
+            [Display(Name ="Имейл")]
             public string Email { get; set; }
         }
 
