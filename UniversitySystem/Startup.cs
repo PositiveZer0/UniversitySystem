@@ -13,6 +13,8 @@ namespace UniversitySystem
     using UniversitySystem.Data;
     using UniversitySystem.Models;
     using UniversitySystem.Services;
+    using UniversitySystem.Data.Seed;
+    using System;
 
     public class Startup
     {
@@ -40,7 +42,17 @@ namespace UniversitySystem
             services.AddTransient<IUserService, UserService>();
             services.AddHttpContextAccessor();
 
-            
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

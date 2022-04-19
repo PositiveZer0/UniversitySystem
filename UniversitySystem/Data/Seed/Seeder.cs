@@ -1,12 +1,54 @@
 ﻿namespace UniversitySystem.Data.Seed
 {
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
     using UniversitySystem.Data.Models;
 
     public static class Seeder
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            var adminRoleId = Guid.NewGuid().ToString();
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = adminRoleId,
+                Name = "admin",
+                NormalizedName = "ADMIN",
+                ConcurrencyStamp = Guid.NewGuid().ToString()
+            });
+
+
+            var user = new IdentityUser
+            {
+                Id = "b97122d0-98ec-4e82-a83e-81becf7bc2d7",
+                UserName = "admin@admin.com",
+                NormalizedUserName = "ADMIN@ADMIN.COM",
+                Email = "admin@admin.com",
+                NormalizedEmail = "ADMIN@ADMIN.COM",
+                PasswordHash = "AQAAAAEAACcQAAAAEP/isqBqBZ6o1mZC+Qg5npoIiDCYxoFUGK/LZ2vW+5AZwUykMuR7VWnFLQfau/L6bg==",
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = false,
+                PhoneNumber = null,
+                TwoFactorEnabled = false,
+                LockoutEnd = null,
+                AccessFailedCount = 0,
+                SecurityStamp = "BCZCUQJFI4GBHUX4DL72DTCW23GRBVEK",
+                ConcurrencyStamp = "e66ba402-7a0a-4977-876a-113d0575f9a4",
+                LockoutEnabled = true,
+            };
+            modelBuilder.Entity<IdentityUser>().HasData(user);
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = adminRoleId,
+                UserId = user.Id,
+            });
+
             modelBuilder.Entity<Subject>().HasData(new Subject()
             {
                 Id = 1,
