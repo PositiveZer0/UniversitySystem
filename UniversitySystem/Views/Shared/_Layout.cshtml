@@ -30,10 +30,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Speciality" asp-action="Index">Специалности</a>
                         </li>
                         @{
-                            if (User.Identity.IsAuthenticated)
+                            if (User.Identity.IsAuthenticated && User.Identity.Name != "admin@admin.com")
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Бал</a>
+                                </li>
+                            }
+                            if (User.Identity.Name == "admin@admin.com")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="All">Студенти</a>
                                 </li>
                             }
                         }

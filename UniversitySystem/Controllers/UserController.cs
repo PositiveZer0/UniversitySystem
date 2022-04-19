@@ -7,6 +7,8 @@
 
     using UniversitySystem.Services;
     using UniversitySystem.Models.UserModels;
+    using Microsoft.AspNetCore.Identity;
+    using UniversitySystem.Data;
 
     public class UserController : Controller
     {
@@ -36,6 +38,11 @@
             await this.userService.AddGrades(user);
 
             return this.Redirect("/");
+        }
+
+        public async Task<IActionResult> All()
+        {
+            return this.View();
         }
     }
 }
