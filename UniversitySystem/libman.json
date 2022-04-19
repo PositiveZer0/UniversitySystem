@@ -6,5 +6,10 @@
       "library": "font-awesome@6.1.1",
       "destination": "wwwroot/lib/font-awesome/"
     }
-  ]
+  ,
+{
+  "library": "tinymce@6.0.1",
+  "destination": "wwwroot/tinymce/"
+}
+]
 }
