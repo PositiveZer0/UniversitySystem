@@ -8,6 +8,7 @@
     using UniversitySystem.Data;
     using UniversitySystem.Models;
     using UniversitySystem.Models.UniversityModels;
+    using UniversitySystem.Models.Contact;
 
     public class HomeController : Controller
     {
@@ -33,6 +34,17 @@
         public IActionResult Contact()
         {
             return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            return this.Redirect("/");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

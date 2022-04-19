@@ -1,15 +1,8 @@
 ﻿@using UniversitySystem.Models.Contact
 @model ContactViewModel
 
-<h2 class="text-center">Contact</h2>
+<h2 class="text-center">Контакт</h2>
 <hr />
-
-<script src="~/tinymce/tinymce.min.js"></script> 
-<script>
-    tinymce.init({
-        selector: '#hi',
-    });
-</script>
 
 <div class="row">
     <div class="col-md-2">
@@ -23,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="@Model.ClientEmail"></label>
-                <input class="form-control" asp-for="@Model.ClientEmail" placeholder="Вашия емейл" />
+                <input class="form-control" asp-for="@Model.ClientEmail" placeholder="Вашия имейл" />
                 <span asp-validation-for="@Model.ClientEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,9 +25,18 @@
                 <span asp-validation-for="@Model.Description" class="text-danger"></span>
             </div>
             <div class="text-center">
-                <button class="btn btn-primary">Изпрати</button>
+                <button type="submit" class="btn btn-primary">Изпрати</button>
             </div>
         </form>
     </div>
 </div>
 
+
+
+<script src="~/tinymce/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({
+        selector: '#hi',
+    });
+</script>
