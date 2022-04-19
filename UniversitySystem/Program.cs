@@ -8,7 +8,6 @@ namespace UniversitySystem
     using System.Collections.Generic;
     using System.Linq;
     using UniversitySystem.Data;
-    using UniversitySystem.Sendgrid;
 
     public class Program
     {
