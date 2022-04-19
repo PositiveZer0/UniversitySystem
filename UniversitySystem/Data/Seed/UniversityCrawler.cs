@@ -36,7 +36,6 @@
             {
                 var university = new University();
                 await GetUniversityData(context, item, university);
-
             }
 
         }

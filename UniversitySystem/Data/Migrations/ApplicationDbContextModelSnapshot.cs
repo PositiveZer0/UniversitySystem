@@ -573,6 +573,9 @@ namespace UniversitySystem.Data.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
 
