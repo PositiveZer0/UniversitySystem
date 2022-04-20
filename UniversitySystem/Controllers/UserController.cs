@@ -9,6 +9,7 @@
     using UniversitySystem.Models.UserModels;
     using Microsoft.AspNetCore.Identity;
     using UniversitySystem.Data;
+    using System;
 
     public class UserController : Controller
     {
@@ -37,13 +38,21 @@
             user.UserId = userId;
             await this.userService.AddGrades(user);
 
-            return this.Redirect("/");
+            var totalScoreUser = Math.Round(2 * (user.BulgarianExam + user.SecondExam) + user.AssesmentBulagrian + user.AssesmentSecondSubject, 2);
+            return this.RedirectToAction(nameof(SuccessfullyAddGrades), new { totalScore = totalScoreUser});
         }
 
-        public async Task<IActionResult> All()
+        [Authorize]
+        public IActionResult All()
         {
             var usersAndGrades = this.userService.GetUsersAndGrades();
             return this.View(usersAndGrades);
+        }
+
+        public IActionResult SuccessfullyAddGrades(double totalScore)
+        {
+            this.ViewData["TotalScore"] = totalScore;
+            return this.View();
         }
     }
 }

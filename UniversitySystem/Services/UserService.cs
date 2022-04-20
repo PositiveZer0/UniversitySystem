@@ -68,6 +68,10 @@
                     Grade = x.Grade,
                 }).ToArray();
 
+                if (grades.Count() != 4)
+                {
+                    continue;
+                }
                 var totalScore = 2 * (grades[0].Grade + grades[1].Grade) + grades[2].Grade + grades[3].Grade;
 
                 userWithGrades.Add(new UserWithGradesViewModel
