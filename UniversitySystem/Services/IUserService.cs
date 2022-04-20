@@ -9,5 +9,7 @@
         Task AddGrades(UserViewModel user);
 
         //ICollection<T> GetUserGrades<T>(string userId);
+
+        ICollection<UserWithGradesViewModel> GetUsersAndGrades();
     }
 }

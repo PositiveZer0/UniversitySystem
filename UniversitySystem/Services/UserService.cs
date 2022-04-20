@@ -1,10 +1,11 @@
 ﻿namespace UniversitySystem.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Automapper;
-
+    using Microsoft.EntityFrameworkCore;
     using UniversitySystem.Data;
     using UniversitySystem.Data.Models;
     using UniversitySystem.Models.UserModels;
@@ -53,6 +54,31 @@
             });
 
             await this.db.SaveChangesAsync();
+        }
+
+        public ICollection<UserWithGradesViewModel> GetUsersAndGrades()
+        {
+            ICollection<UserWithGradesViewModel> userWithGrades = new List<UserWithGradesViewModel>();
+            var users =  this.db.Users.Where(x => x.Email != "admin@admin.com").ToList();
+
+            foreach (var user in users)
+            {
+                var grades = this.db.UserSubjects.Where(x => x.UserId == user.Id).Select(x => new GradeViewModel
+                {
+                    Grade = x.Grade,
+                }).ToArray();
+
+                var totalScore = 2 * (grades[0].Grade + grades[1].Grade) + grades[2].Grade + grades[3].Grade;
+
+                userWithGrades.Add(new UserWithGradesViewModel
+                {
+                    Email = user.Email,
+                    Grades = grades.ToList(),
+                    TotalScore = Math.Round(totalScore, 2),
+                });
+            }
+
+            return userWithGrades;
         }
 
         //public ICollection<T> GetUserGrades<T>(string userId)

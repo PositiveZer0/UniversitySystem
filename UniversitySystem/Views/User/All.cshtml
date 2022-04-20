@@ -1,1 +1,41 @@
-﻿<h1>All students</h1>
+﻿@using UniversitySystem.Models.UserModels
+@model ICollection<UserWithGradesViewModel>
+@{
+    ViewData["Title"] = "Студенти";
+    var counter = 0;
+}
+
+<h2 class="text-center">Всички студенти</h2>
+<hr />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Имейл на студента</th>
+            <th scope="col">Матура по БЕЛ</th>
+            <th scope="col">Втора матура</th>
+            <th scope="col">Годишна оценка по БЕЛ</th>
+            <th scope="col">Втора годишна оценка</th>
+            <th scope="col">БАЛ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in @Model)
+        {
+            counter++;
+            <tr>
+                <th scope="row">@counter</th>
+                <td>@user.Email</td>
+
+                @foreach (var grade in user.Grades)
+                {
+                    <td>@grade.Grade</td>
+                }
+
+                <td>@user.TotalScore</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -42,7 +42,8 @@
 
         public async Task<IActionResult> All()
         {
-            return this.View();
+            var usersAndGrades = this.userService.GetUsersAndGrades();
+            return this.View(usersAndGrades);
         }
     }
 }
