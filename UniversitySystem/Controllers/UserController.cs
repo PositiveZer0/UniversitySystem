@@ -26,8 +26,9 @@
             return this.View();
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
+        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Index(UserViewModel user)
         {
             if (!this.ModelState.IsValid)

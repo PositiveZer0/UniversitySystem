@@ -41,6 +41,7 @@
         }
 
         [HttpPost]
+        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Contact(ContactViewModel model)
         {
             if (!ModelState.IsValid)

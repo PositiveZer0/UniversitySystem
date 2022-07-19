@@ -15,6 +15,7 @@ namespace UniversitySystem
     using UniversitySystem.Services;
     using UniversitySystem.Data.Seed;
     using System;
+    using Microsoft.AspNetCore.Mvc;
 
     public class Startup
     {
@@ -41,6 +42,9 @@ namespace UniversitySystem
             services.AddTransient<ISpecialityService, SpecialityService>();
             services.AddTransient<IUserService, UserService>();
             services.AddHttpContextAccessor();
+
+            services.AddMvc(options =>
+                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 
             services.Configure<IdentityOptions>(options =>
             {
