@@ -5,7 +5,10 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversitySystem", "UniversitySystem\UniversitySystem.csproj", "{A3506339-883D-456F-BB66-7C114D980A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversitySystem.Tests", "UniversitySystem.Tests\UniversitySystem.Tests.csproj", "{474F95B5-A086-4347-B84B-B096A2893DDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversitySystem.Tests", "UniversitySystem.Tests\UniversitySystem.Tests.csproj", "{474F95B5-A086-4347-B84B-B096A2893DDB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A3506339-883D-456F-BB66-7C114D980A5D} = {A3506339-883D-456F-BB66-7C114D980A5D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
