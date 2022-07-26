@@ -8,6 +8,15 @@
 
 <h2 class="text-center">@ViewData["Title"]</h2>
 <hr />
+@if (!User.Identity.IsAuthenticated)
+{
+    <form class="form-inline my-2 my-lg-0">
+        <p class="btn btn-outline-primary my-2 my-sm-0" type="submit">AJAX Search</p>
+        <input id="searchedText" class="form-control mr-sm-2" onkeyup="Login()" type="search" placeholder="Search" aria-label="Search">
+    </form>
+}
+
+<div style="height: 10px"></div>
 
 <table class="table">
     <thead>
@@ -22,7 +31,7 @@
             }
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tableBody">
 
         @foreach (var speciality in Model.Specialities)
         {
@@ -51,3 +60,34 @@
 <hr />
 
 @await Html.PartialAsync("_PaginationPartial.cshtml", @Model)
+
+
+<script type="text/javascript">
+    function Login() {
+        var page = 1;
+        var searchedText = $("#searchedText").val();
+        var counter = (page - 1) * 20 + 1;
+        $("#tableBody").empty();
+        $.ajax({
+            url: '/api/Search/' + searchedText,
+            method: 'GET',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log(data);
+                data.specialities.forEach((element, index) => $("#tableBody").append(
+                    '<tr>' +
+                        '<th scope="row">' + (counter + index) + '</th>' +
+                        '<td>' + element.name + '</td>' +
+                        '<td>' + element.universityName + '</td>' +
+                        '<td>' + element.minimumScore + '</td>' +
+                    '</tr>'
+                ));
+                console.log(data);
+            },
+            fail: function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            }
+        })
+    }
+</script>

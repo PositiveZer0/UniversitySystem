@@ -168,10 +168,5 @@ namespace UniversitySystem.Tests
            Assert.Equal(21, specialityCount);
         }
 
-
-        public void SpecialitiesForPageShouldReturnTwentySpecialities()
-        {
-
-        }
     }
 }

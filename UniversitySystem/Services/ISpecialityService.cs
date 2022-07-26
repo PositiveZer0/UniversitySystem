@@ -6,7 +6,7 @@
     {
         ICollection<T> GetAll<T>();
 
-        ICollection<T> GetSpecialitiesForPage<T>(int page, int count);
+        ICollection<T> GetSpecialitiesForPage<T>(int page, int count, string searchedWord = "");
 
         int GetSpecialityCount();
 

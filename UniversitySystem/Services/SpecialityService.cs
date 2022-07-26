@@ -24,13 +24,13 @@
             return this.db.Specialities.Where(x => x.UniversityId == id).OrderBy(x => x.Name).To<T>().ToList();
         }
 
-        public ICollection<T> GetSpecialitiesForPage<T>(int page, int count)
+        public ICollection<T> GetSpecialitiesForPage<T>(int page, int count, string searchedWord = "")
         {
             //0-19 page 1
             //20-39 page 2
             //40-59 page 3
 
-            return this.db.Specialities.OrderBy(x => x.Name).Skip(count * (page - 1)).Take(count).To<T>().ToList();
+            return this.db.Specialities.Where(x => x.Name.Contains(searchedWord)).OrderBy(x => x.Name).Skip(count * (page - 1)).Take(count).To<T>().ToList();
         }
 
         public int GetSpecialityCount()
