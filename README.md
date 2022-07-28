@@ -1,8 +1,8 @@
 # UniversitySystem
 <h3>🔨 Built with:</h3>
-ASP.NET 6.0 <br />
+ASP.NET MVC 6.0 <br />
 Visual Studio 2019 <br />
-Entity Framework Core 5.0 <br />
+Entity Framework Core 6.0 <br />
 Sql Server <br />
 SendGrid <br />
 AutoMapper <br />
